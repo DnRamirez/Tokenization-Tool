@@ -8,18 +8,12 @@
 #include <queue>
 using namespace std; 
 
-void Tokenizer::tokenizeLine(string line) {  
-    //what do we need to pass in function? 
-    //answer: we need to pass in the line that we want to tokenize
-    //tokenize the line and store it in a vector
-    //logic to tokenize the line
-    //we need to create a vector of strings
-    //we need to create a string variable to store the token
-    //we need to create a for loop to iterate through the line
+void Tokenizer::tokenizeLine(string line) { 
+    // tokenize line and store in vector
     stringstream check1(line); 
     string intermediate;
     while(getline(check1, intermediate, ' ')) { 
-        //only using space as a delimiter, this does not take into account punctuation
+        // only using space as a delimiter, this does not take into account punctuation
         tokens.push_back(intermediate); 
     }
 
@@ -28,7 +22,7 @@ void Tokenizer::tokenizeLine(string line) {
 
 
 
-//definition for destructor 
+// definition for destructor 
 Tokenizer::~Tokenizer() { 
 }
 
@@ -41,7 +35,7 @@ void Tokenizer::printNumberOfTokens(){
 }
 
 void Tokenizer::printFrequencyAnalysis(string word) { 
-    //we need to iterate through the vector and count the number of times the word appears 
+    // iterate through the vector and count the number of times the word appears 
     int count = 0; 
     for (int i = 0; i < tokens.size(); i++) { 
         if (tokens[i] == word) { 
@@ -82,11 +76,9 @@ void Tokenizer::printFrequencyAnalysis() {
 }
 
 void Tokenizer::removeStopWords() { 
-    //this implementation takes very long to execute, need to find a quicker way
-    
     vector<string> stopWords = {"a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "he", "in", "is", "it", "its", "of", "on", "that", "the", "to", "was", "were", "will", "with"};
-string stopWord; 
-for (int i = 0; i < stopWords.size(); i++) { 
+    string stopWord; 
+    for (int i = 0; i < stopWords.size(); i++) { 
     stopWord = stopWords[i]; 
     for (int j = 0; j < tokens.size(); j++) { 
         if (tokens[j] == stopWord) { 

@@ -34,39 +34,27 @@ void options() {
 
 
 void executeAction(int c) { 
-	//variables
+	// variables
 	string line; 
 	ifstream myFile; 
 
 
-	//define switch cases for each menu option 
+	// define switch cases for each menu option 
 	switch(c) 
 	{
 		case 1:  
-			cin.ignore();  //cin.ignore() is used to clear the input buffer
+			cin.ignore();  
 			cout << endl << "Type Filename then hit 'Enter': "; 
 			getline(cin, filename); 
-			myFile.open(filename); // use the open method to open the file
+			myFile.open(filename); 
 			if (myFile.is_open()) { 
-				while (getline(myFile,line)) {
-					
-					t.tokenizeLine(line);
-					//print the tokens from vector 
-					/*for (int i = 0; i < t.tokens.size(); i++) {
-						cout << t.tokens[i] << endl;
-					}*/
-					
-					//now we need to tokenize the line, we want to tokenize the line and store it in a vector
-					//we need to create a vector of strings
-
+				while (getline(myFile,line)) {	
+					t.tokenizeLine(line);		
 				}
 				myFile.close(); 
 			} else { 
 				cout << "Unable to open file"; 
 			} 
-			 /*cout << "Tokenization Finished" << endl; 
-			 cout << "Returning to Main Menu..." << endl; 
-			 this_thread::sleep_for(chrono::seconds(3)); //sleep for 1 second*/  
 			 displayLoadingAnimation(filename);
 			 options();
 			break; 
@@ -121,7 +109,7 @@ int main() {
 
 
 
-	int c = 1; //dummy value 
+	int c = 1; // dummy value 
 
 
 	do { 
@@ -146,11 +134,10 @@ int main() {
 		cout << "Please enter your selection (1-8): "; 
 		cin >> c;
 		executeAction(c); 
-	} while (c != 8); //problem: when user enters option, it will execute once but return to main menu and not continue with action
-					//
-
+	} while (c != 8); 
 
 return 0; 
+
 } 
 
 
